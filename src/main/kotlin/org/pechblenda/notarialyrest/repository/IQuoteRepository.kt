@@ -6,4 +6,6 @@ import org.pechblenda.notarialyrest.entity.Quote
 
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface IQuoteRepository: JpaRepository<Quote, UUID>
+interface IQuoteRepository: JpaRepository<Quote, UUID> {
+	fun findAllByUserUuid(userUUID: UUID): List<Quote>
+}

@@ -10,7 +10,8 @@ import org.pechblenda.service.Response
 import org.pechblenda.service.helper.Validation
 import org.pechblenda.service.helper.ValidationType
 import org.pechblenda.service.helper.Validations
-import org.pechblenda.util.Color
+import org.pechblenda.style.CategoryColor
+import org.pechblenda.style.Color
 
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
@@ -74,7 +75,7 @@ class ClientService(
 			SecurityContextHolder.getContext().authentication.name
 		).get() as User
 
-		client.color = color.getHexRandomColor()
+		client.color = color.getMaterialColor(CategoryColor.MATERIAL_500).background
 		client.user = user
 
 		return response.toMap(

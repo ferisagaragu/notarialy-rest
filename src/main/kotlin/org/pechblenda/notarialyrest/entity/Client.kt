@@ -19,9 +19,26 @@ class Client(
 	var surname: String,
 	var motherSurname: String,
 	var address: String,
+	var lat: Double,
+	var lng: Double,
 	var phoneNumber: String,
 	var color: String,
 
 	@ManyToOne
 	var user: User?
-)
+) {
+
+	constructor(): this(
+		uuid = UUID.randomUUID(),
+		name = "",
+		surname = "",
+		motherSurname = "",
+		address = "",
+		lat = 0.0,
+		lng = 0.0,
+		phoneNumber = "",
+		color = "",
+		user = null
+	)
+
+}

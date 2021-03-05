@@ -10,9 +10,6 @@ import javax.persistence.Id
 import javax.persistence.ManyToOne
 import javax.persistence.Table
 
-import org.pechblenda.service.annotation.Key
-import org.pechblenda.service.enum.DefaultValue
-
 @Entity
 @Table(name = "companies")
 class Company(
@@ -40,10 +37,5 @@ class Company(
 		color = "",
 		user = null
 	)
-
-	@Key(name = "userUuid", autoCall = true, defaultNullValue = DefaultValue.NULL)
-	fun user(): UUID? {
-		return user?.uuid
-	}
 
 }

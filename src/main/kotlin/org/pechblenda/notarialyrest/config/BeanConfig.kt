@@ -6,6 +6,7 @@ import org.pechblenda.doc.entity.ApiInfo
 import org.pechblenda.doc.entity.Credential
 import org.pechblenda.notarialyrest.controller.ClientController
 import org.pechblenda.notarialyrest.controller.CompanyController
+import org.pechblenda.notarialyrest.controller.QuoteController
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
@@ -27,7 +28,6 @@ class BeanConfig {
 				description = "Notarialy rest api",
 				iconUrl = "",
 				version = "0.0.1",
-				baseUrl = "http://localhost:5000",
 				credentials = listOf(
 					Credential(
 						name = "User Root",
@@ -39,7 +39,8 @@ class BeanConfig {
 			),
 			AuthController::class,
 			CompanyController::class,
-			ClientController::class
+			ClientController::class,
+			QuoteController::class
 		)
 	}
 
