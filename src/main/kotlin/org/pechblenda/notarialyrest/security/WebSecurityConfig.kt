@@ -53,7 +53,9 @@ class WebSecurityConfig: WebSecurityConfigurerAdapter() {
 			.disable()
 			.authorizeRequests()
 			.antMatchers(
-				"/api/**/"
+				"/api/**/",
+				"/rest/**",
+				"/socket/**"
 			).permitAll()
 			.anyRequest()
 			.authenticated()

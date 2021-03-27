@@ -11,6 +11,7 @@ import javax.persistence.Entity
 import javax.persistence.Table
 import org.pechblenda.service.annotation.Key
 import org.pechblenda.service.enum.DefaultValue
+import kotlin.math.roundToInt
 
 @Entity
 @Table(name = "works")
@@ -19,6 +20,7 @@ class Work(
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	var uuid: UUID,
 	var quantity: Double,
+	var measure: String,
 	var concept: String,
 	var unitPrice: Double,
 	var totalPrice: Double,
@@ -30,6 +32,7 @@ class Work(
 	constructor():this(
 		uuid = UUID.randomUUID(),
 		quantity = 0.0,
+		measure = "",
 		concept = "",
 		unitPrice = 0.0,
 		totalPrice = 0.0,
@@ -38,19 +41,19 @@ class Work(
 
 	@Key(name = "quantity", autoCall = false, defaultNullValue = DefaultValue.TEXT)
 	fun quantity(): String {
-		val numberFormat = NumberFormat.getCurrencyInstance()
-		return numberFormat.format(quantity).replace("$", "") + " MNX"
+
+		return "${quantity.roundToInt()} $measure"
 	}
 
 	@Key(name = "unitPrice", autoCall = false, defaultNullValue = DefaultValue.TEXT)
 	fun unitPrice(): String {
-		val numberFormat = NumberFormat.getCurrencyInstance()
+		val numberFormat: NumberFormat = NumberFormat.getCurrencyInstance()
 		return numberFormat.format(unitPrice).replace("$", "") + " MNX"
 	}
 
 	@Key(name = "totalPrice", autoCall = false, defaultNullValue = DefaultValue.TEXT)
 	fun totalPrice(): String {
-		val numberFormat = NumberFormat.getCurrencyInstance()
+		val numberFormat: NumberFormat = NumberFormat.getCurrencyInstance()
 		return numberFormat.format(totalPrice).replace("$", "") + " MNX"
 	}
 

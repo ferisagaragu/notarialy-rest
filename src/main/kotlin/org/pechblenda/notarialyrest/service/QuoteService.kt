@@ -18,28 +18,34 @@ import org.pechblenda.service.helper.Validations
 import org.pechblenda.style.CategoryColor
 import org.pechblenda.style.Color
 import org.pechblenda.util.Report
+import org.pechblenda.service.helper.ProtectField
+import org.pechblenda.service.helper.ProtectFields
 
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 
 import java.util.UUID
+import org.pechblenda.notarialyrest.repository.IWorkRepository
 
 @Service
 class QuoteService(
 	private val quoteRepository: IQuoteRepository,
 	private val companyRepository: ICompanyRepository,
 	private val clientRepository: IClientRepository,
+	private val workRepository: IWorkRepository,
 	private val authRepository: IAuthRepository,
 	private val report: Report,
 	private val color: Color,
 	private val response: Response
 ): IQuoteService {
 
+	@Transactional(readOnly = true)
 	override fun findQuotesByUserUuid(): ResponseEntity<Any> {
 		val user = authRepository.findByUserName(
 			SecurityContextHolder.getContext().authentication.name
@@ -50,6 +56,7 @@ class QuoteService(
 		).ok()
 	}
 
+	@Transactional(readOnly = true)
 	override fun findQuoteByUuid(uuid: UUID): ResponseEntity<Any> {
 		val quote = quoteRepository.findById(uuid).orElseThrow {
 			BadRequestException("Upps no se encuentra el presupuesto")
@@ -58,6 +65,7 @@ class QuoteService(
 		return response.toMap(quote).ok()
 	}
 
+	@Transactional(readOnly = true)
 	override fun generatePDFQuote(uuid: UUID): ResponseEntity<Any> {
 		val quote = quoteRepository.findById(uuid).orElseThrow {
 			BadRequestException("Upps no se encuentra el presupuesto")
@@ -68,7 +76,7 @@ class QuoteService(
 		var total = 0.0
 
 		quote.works.forEach { work ->
-			total += (work.quantity * work.totalPrice)
+			total += (work.quantity * work.unitPrice)
 		}
 
 		total += quote.workforce
@@ -91,7 +99,7 @@ class QuoteService(
 			numberFormat.format(quote.workforce)
 				.replace("$", "")
 		} MNX"
-		parameters["qrCode"] = "http://localhost:5000/api/auth/generate-profile-image/F/%23000000/%2300BCD4"
+		parameters["qrCode"] = "http://localhost:4200/#/quote/a0e2eb11-cdf9-4273-aaa3-4a3dc20e4888"
 		parameters["total"] = "${
 			numberFormat.format(total)
 				.replace("$", "")
@@ -114,6 +122,7 @@ class QuoteService(
 		)
 	}
 
+	@Transactional
 	override fun createQuote(request: Request): ResponseEntity<Any> {
 		val quote = request.to<Quote>(
 			Quote::class,
@@ -143,6 +152,30 @@ class QuoteService(
 		val quoteSave = quoteRepository.save(quote)
 
 		return response.toMap(quoteSave).created()
+	}
+
+	@Transactional
+	override fun updateQuote(request: Request): ResponseEntity<Any> {
+		val quote = request.merge<Quote>(
+			EntityParse("uuid", quoteRepository, IdType.UUID),
+			ProtectFields(ProtectField("uuid")),
+			EntityParse("companyUuid", "company", companyRepository, IdType.UUID),
+			EntityParse("clientUuid", "client", clientRepository, IdType.UUID)
+		)
+
+		return response.toMap(quote).ok()
+	}
+
+	@Transactional
+	override fun deleteQuote(uuid: UUID): ResponseEntity<Any> {
+		val quote = quoteRepository.findById(uuid).orElseThrow {
+			BadRequestException("Upps no se encuentra el presupuesto")
+		}
+
+		quote?.works?.forEach { work -> workRepository.delete(work) }
+		quoteRepository.delete(quote)
+
+		return response.ok()
 	}
 
 }

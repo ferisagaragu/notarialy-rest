@@ -63,4 +63,9 @@ class Quote(
 		return client
 	}
 
+	@Key(name = "works", autoCall = true, defaultNullValue = DefaultValue.NULL)
+	fun works(): List<Work>? {
+		return works
+	}
+
 }

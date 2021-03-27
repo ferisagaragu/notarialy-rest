@@ -11,4 +11,6 @@ interface IQuoteService {
 	fun findQuoteByUuid(uuid: UUID): ResponseEntity<Any>
 	fun generatePDFQuote(uuid: UUID): ResponseEntity<Any>
 	fun createQuote(request: Request): ResponseEntity<Any>
+	fun updateQuote(request: Request): ResponseEntity<Any>
+	fun deleteQuote(uuid: UUID): ResponseEntity<Any>
 }

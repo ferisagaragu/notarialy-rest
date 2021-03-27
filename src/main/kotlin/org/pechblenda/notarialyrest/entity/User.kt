@@ -10,7 +10,9 @@ import javax.persistence.OneToMany
 import javax.persistence.Table
 
 import java.util.UUID
+
 import org.pechblenda.auth.entity.IUser
+import org.pechblenda.auth.enum.AccountType
 
 @Entity
 @Table(name = "users")
@@ -40,6 +42,8 @@ class User(
 
 	override var activatePassword: UUID?,
 
+	override var accountType: String,
+
 	@ManyToMany
 	var roles: MutableList<Role>,
 
@@ -63,6 +67,7 @@ class User(
 		enabled = false,
 		active = false,
 		activatePassword = null,
+		accountType = AccountType.DEFAULT.name,
 		roles = mutableListOf<Role>(),
 		companies = mutableListOf<Company>(),
 		client = mutableListOf<Client>()

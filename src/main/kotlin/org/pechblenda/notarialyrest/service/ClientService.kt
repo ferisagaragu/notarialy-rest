@@ -1,5 +1,7 @@
 package org.pechblenda.notarialyrest.service
 
+import java.util.*
+import org.pechblenda.exception.BadRequestException
 import org.pechblenda.notarialyrest.entity.Client
 import org.pechblenda.notarialyrest.entity.User
 import org.pechblenda.notarialyrest.repository.IClientRepository
@@ -30,9 +32,9 @@ class ClientService(
 			SecurityContextHolder.getContext().authentication.name
 		).get() as User
 
-		val clients = clientRepository.findAllByUserUuid(user.uuid)
+		val clients = clientRepository.findAllByUserUuidDetail(user.uuid)
 
-		return response.toListMap(clients).ok()
+		return response.ok(clients)
 	}
 
 	override fun createClient(request: Request): ResponseEntity<Any> {
@@ -81,6 +83,16 @@ class ClientService(
 		return response.toMap(
 			clientRepository.save(client)
 		).created()
+	}
+
+	override fun deleteClient(uuid: UUID): ResponseEntity<Any> {
+		val client = clientRepository.findById(uuid).orElseThrow {
+			BadRequestException("Upps no se encuentra el cliente")
+		}
+
+		clientRepository.delete(client)
+
+		return response.ok()
 	}
 
 }

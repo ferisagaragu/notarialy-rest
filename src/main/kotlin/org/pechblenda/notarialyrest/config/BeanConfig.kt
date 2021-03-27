@@ -31,7 +31,7 @@ class BeanConfig {
 				credentials = listOf(
 					Credential(
 						name = "User Root",
-						endPoint = "http://localhost:5000/api/auth/sign-in",
+						endPoint = "http://localhost:5000/rest/auth/sign-in",
 						bodyRequest = bodyRequest,
 						tokenMapping = "data.session.token"
 					)
