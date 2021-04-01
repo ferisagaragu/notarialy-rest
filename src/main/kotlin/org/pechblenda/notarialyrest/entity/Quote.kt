@@ -7,9 +7,11 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
+import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import javax.persistence.OneToOne
 import javax.persistence.Table
+import org.hibernate.annotations.ManyToAny
 
 import org.pechblenda.service.annotation.Key
 import org.pechblenda.service.enum.DefaultValue
@@ -27,10 +29,10 @@ class Quote(
 	@OneToOne
 	var user: User?,
 
-	@OneToOne
+	@ManyToOne
 	var company: Company?,
 
-	@OneToOne
+	@ManyToOne
 	var client: Client?,
 
 	@OneToMany(mappedBy = "quote")

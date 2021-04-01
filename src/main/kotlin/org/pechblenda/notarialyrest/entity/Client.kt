@@ -7,7 +7,11 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.ManyToOne
+import javax.persistence.OneToMany
 import javax.persistence.Table
+
+import org.pechblenda.service.annotation.Key
+import org.pechblenda.service.enum.DefaultValue
 
 @Entity
 @Table(name = "clients")
@@ -24,6 +28,9 @@ class Client(
 	var phoneNumber: String,
 	var color: String,
 
+	@OneToMany(mappedBy = "client")
+	var quotes: List<Quote>?,
+
 	@ManyToOne
 	var user: User?
 ) {
@@ -38,7 +45,13 @@ class Client(
 		lng = 0.0,
 		phoneNumber = "",
 		color = "",
+		quotes = null,
 		user = null
 	)
+
+	@Key(name= "delete", autoCall = true, defaultNullValue = DefaultValue.BOOLEAN)
+	fun delete(): Boolean {
+		return quotes?.size!! <= 0
+	}
 
 }

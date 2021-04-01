@@ -1,6 +1,5 @@
 package org.pechblenda.notarialyrest.service
 
-import java.util.*
 import org.pechblenda.exception.BadRequestException
 import org.pechblenda.notarialyrest.entity.Company
 import org.pechblenda.notarialyrest.entity.User
@@ -24,6 +23,8 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.multipart.MultipartFile
 
+import java.util.UUID
+
 @Service
 class CompanyService(
 	private val companyRepository: ICompanyRepository,
@@ -39,9 +40,9 @@ class CompanyService(
 			SecurityContextHolder.getContext().authentication.name
 		).get()
 
-		val companies = companyRepository.findAllByUserUuidDetail(user.uuid)
+		val companies = companyRepository.findAllByUserUuid(user.uuid)
 
-		return response.ok(companies)
+		return response.toListMap(companies).ok()
 	}
 
 	@Transactional

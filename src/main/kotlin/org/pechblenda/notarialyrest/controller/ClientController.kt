@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
 
 import java.util.UUID
+import org.springframework.web.bind.annotation.PutMapping
 
 @CrossOrigin(methods = [
 	RequestMethod.GET,
 	RequestMethod.POST,
+	RequestMethod.PUT,
 	RequestMethod.DELETE
 ])
 @RestController
@@ -45,6 +47,17 @@ class ClientController(
 	): ResponseEntity<Any> {
 		return try {
 			clientService.createClient(request)
+		} catch (e: ResponseStatusException) {
+			httpExceptionResponse.error(e)
+		}
+	}
+
+	@PutMapping
+	fun updateClient(
+		@RequestBody request: Request
+	): ResponseEntity<Any> {
+		return try {
+			clientService.updateClient(request)
 		} catch (e: ResponseStatusException) {
 			httpExceptionResponse.error(e)
 		}

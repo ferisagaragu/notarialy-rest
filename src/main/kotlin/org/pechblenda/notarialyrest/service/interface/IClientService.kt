@@ -8,5 +8,6 @@ import java.util.UUID
 interface IClientService {
 	fun findAllClientsByUserUuid(): ResponseEntity<Any>
 	fun createClient(request: Request): ResponseEntity<Any>
+	fun updateClient(request: Request): ResponseEntity<Any>
 	fun deleteClient(uuid: UUID): ResponseEntity<Any>
 }

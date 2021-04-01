@@ -41,20 +41,25 @@ class Work(
 
 	@Key(name = "quantity", autoCall = false, defaultNullValue = DefaultValue.TEXT)
 	fun quantity(): String {
-
 		return "${quantity.roundToInt()} $measure"
 	}
 
 	@Key(name = "unitPrice", autoCall = false, defaultNullValue = DefaultValue.TEXT)
 	fun unitPrice(): String {
 		val numberFormat: NumberFormat = NumberFormat.getCurrencyInstance()
-		return numberFormat.format(unitPrice).replace("$", "") + " MNX"
+		return numberFormat.format(unitPrice)
+			.replace("$", "")
+			.replace("¤", "") +
+			" MNX"
 	}
 
 	@Key(name = "totalPrice", autoCall = false, defaultNullValue = DefaultValue.TEXT)
 	fun totalPrice(): String {
 		val numberFormat: NumberFormat = NumberFormat.getCurrencyInstance()
-		return numberFormat.format(totalPrice).replace("$", "") + " MNX"
+		return numberFormat.format(totalPrice)
+			.replace("$", "")
+			.replace("¤", "") +
+			" MNX"
 	}
 
 }

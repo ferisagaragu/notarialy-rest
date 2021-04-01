@@ -20,6 +20,7 @@ import org.pechblenda.style.Color
 import org.pechblenda.util.Report
 import org.pechblenda.service.helper.ProtectField
 import org.pechblenda.service.helper.ProtectFields
+import org.pechblenda.notarialyrest.repository.IWorkRepository
 
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.ResponseEntity
@@ -31,7 +32,6 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 
 import java.util.UUID
-import org.pechblenda.notarialyrest.repository.IWorkRepository
 
 @Service
 class QuoteService(
@@ -97,12 +97,12 @@ class QuoteService(
 		parameters["createDate"] = simpleDateFormat.format(quote.createDate)
 		parameters["workforce"] = "${
 			numberFormat.format(quote.workforce)
-				.replace("$", "")
+				.replace("$", "").replace("¤", "")
 		} MNX"
 		parameters["qrCode"] = "http://localhost:4200/#/quote/a0e2eb11-cdf9-4273-aaa3-4a3dc20e4888"
 		parameters["total"] = "${
 			numberFormat.format(total)
-				.replace("$", "")
+				.replace("$", "").replace("¤", "")
 		} MNX"
 
 		return response.file(

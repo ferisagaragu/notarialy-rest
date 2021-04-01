@@ -77,11 +77,6 @@ class WebSecurityConfig: WebSecurityConfigurerAdapter() {
 		return JwtAuthEntryPoint()
 	}
 
-  @Bean
-  fun jwtProvider(): JwtProvider {
-  	return JwtProvider()
-  }
-
 	@Bean
 	fun passwordEncoder(): PasswordEncoder {
 		return BCryptPasswordEncoder()
