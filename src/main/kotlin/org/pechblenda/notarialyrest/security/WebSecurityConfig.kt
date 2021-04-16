@@ -55,7 +55,9 @@ class WebSecurityConfig: WebSecurityConfigurerAdapter() {
 			.antMatchers(
 				"/api/**/",
 				"/rest/**",
-				"/socket/**"
+				"/socket/**",
+				"/ws/**",
+			  "/rest/clients/send"
 			).permitAll()
 			.anyRequest()
 			.authenticated()

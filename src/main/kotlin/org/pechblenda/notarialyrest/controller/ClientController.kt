@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.server.ResponseStatusException
+import org.springframework.messaging.simp.SimpMessagingTemplate
+import org.springframework.web.bind.annotation.PutMapping
 
 import java.util.UUID
-import org.springframework.web.bind.annotation.PutMapping
 
 @CrossOrigin(methods = [
 	RequestMethod.GET,
@@ -29,7 +30,8 @@ import org.springframework.web.bind.annotation.PutMapping
 @RequestMapping(name = "Client", value = ["/rest/clients"])
 class ClientController(
 	private val clientService: IClientService,
-	private val httpExceptionResponse: HttpExceptionResponse
+	private val httpExceptionResponse: HttpExceptionResponse,
+	private val simpMessagingTemplate: SimpMessagingTemplate
 ) {
 
 	@GetMapping
@@ -72,6 +74,22 @@ class ClientController(
 		} catch (e: ResponseStatusException) {
 			httpExceptionResponse.error(e)
 		}
+	}
+
+	@GetMapping("/send")
+	fun ds() {
+		simpMessagingTemplate.convertAndSend(
+			"/notify",
+			"hola primo"
+		)
+		simpMessagingTemplate.convertAndSend(
+			"/notify",
+			"como has"
+		)
+		simpMessagingTemplate.convertAndSend(
+			"/notify/12",
+			"estado"
+		)
 	}
 
 }

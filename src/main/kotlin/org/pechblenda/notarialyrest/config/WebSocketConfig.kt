@@ -36,12 +36,12 @@ class WebSocketConfig: WebSocketMessageBrokerConfigurer {
 
 	override fun registerStompEndpoints(registry: StompEndpointRegistry) {
 		registry
-			.addEndpoint("/socket/notifications")
-			.setAllowedOrigins("*")
+			.addEndpoint("/ws")
+			.setAllowedOriginPatterns("*")
 
 		registry
-			.addEndpoint("/socket/notifications")
-			.setAllowedOrigins("*")
+			.addEndpoint("/ws")
+			.setAllowedOriginPatterns("*")
 			.withSockJS()
 	}
 

@@ -24,6 +24,8 @@ class Company(
 	var name: String,
 	var slogan: String,
 	var title: String,
+
+	@Column(length = 10000)
 	var logoUrl: String,
 	var color: String,
 

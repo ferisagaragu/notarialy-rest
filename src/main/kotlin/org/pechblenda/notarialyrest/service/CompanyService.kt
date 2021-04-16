@@ -16,6 +16,7 @@ import org.pechblenda.service.helper.Validations
 import org.pechblenda.storage.XenonStorage
 import org.pechblenda.style.CategoryColor
 import org.pechblenda.style.Color
+import org.pechblenda.storage.FirebaseStorage
 
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
@@ -24,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.multipart.MultipartFile
 
 import java.util.UUID
+import org.springframework.beans.factory.annotation.Value
 
 @Service
 class CompanyService(
@@ -31,8 +33,11 @@ class CompanyService(
 	private val authRepository: IAuthRepository,
 	private val response: Response,
 	private val color: Color,
-	private val xenonStorage: XenonStorage
+	private val firebaseStorage: FirebaseStorage
 ): ICompanyService {
+
+	@Value("\${storage.firebase.company.image}")
+	private lateinit var companyImage: String
 
 	@Transactional(readOnly = true)
 	override fun findAllCompaniesByUserUuid(): ResponseEntity<Any> {
@@ -76,13 +81,14 @@ class CompanyService(
 		company.user = user
 		company.color = color.getMaterialColor(CategoryColor.MATERIAL_500).background
 		company.logoUrl = if (file.size > 0)
-			xenonStorage.put(
+			firebaseStorage.put(
+				"companies",
 				"image/png",
 				file.originalFilename!!,
-				".png",
+				"",
 				file.inputStream
 			).url
-		else "http://localhost:6060/storages/408de3b7-8375-41e0-bfda-921a1c3331d4"
+		else companyImage
 
 		return response.toMap(
 			companyRepository.save(company)
@@ -116,10 +122,11 @@ class CompanyService(
 		)
 
 		if (file.size > 0) {
-			company.logoUrl = xenonStorage.put(
+			company.logoUrl = firebaseStorage.put(
+				"companies",
 				"image/png",
 				file.originalFilename!!,
-				".png",
+				"",
 				file.inputStream
 			).url
 		}

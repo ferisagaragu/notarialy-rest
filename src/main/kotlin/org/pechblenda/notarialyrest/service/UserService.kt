@@ -7,6 +7,8 @@ import org.pechblenda.service.Request
 import org.pechblenda.service.Response
 import org.pechblenda.service.enum.IdType
 import org.pechblenda.service.helper.EntityParse
+import org.pechblenda.service.helper.ProtectField
+import org.pechblenda.service.helper.ProtectFields
 
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
@@ -20,11 +22,21 @@ class UserService(
 
 	@Transactional
 	override fun updateUser(request: Request): ResponseEntity<Any> {
-		val user = request.merge<User>(
+		request.merge<User>(
 			EntityParse(
 				"uuid",
 				userRepository,
 				IdType.UUID
+			),
+			ProtectFields(
+				ProtectField("accountType"),
+				ProtectField("activatePassword"),
+				ProtectField("active"),
+				ProtectField("email"),
+				ProtectField("enabled"),
+				ProtectField("password"),
+				ProtectField("photo"),
+				ProtectField("userName")
 			)
 		)
 
