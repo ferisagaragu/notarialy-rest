@@ -65,7 +65,7 @@
 					<pen lineWidth="1.0" lineStyle="Solid" lineColor="#03A9F4"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{companyName}]]></textFieldExpression>
 			</textField>
@@ -81,7 +81,7 @@
 					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#03A9F4"/>
 				</box>
 				<textElement verticalAlignment="Middle" markup="none">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{userName}]]></textFieldExpression>
 			</textField>
@@ -94,7 +94,7 @@
 					<pen lineWidth="0.25" lineColor="#9E9E9E"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="false"/>
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{createDate}]]></textFieldExpression>
 			</textField>
@@ -107,35 +107,35 @@
 			<staticText>
 				<reportElement x="10" y="103" width="90" height="17" uuid="2a6494de-f269-4fe1-8c70-a29cb99b8b19"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cliente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="126" width="90" height="17" uuid="de3b1537-fe20-4dfe-92bf-7306a3a3d16d"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Domicilio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="149" width="90" height="17" uuid="f1f0e81f-b094-4361-bdc6-0137fe0ee0b8"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Teléfono]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="100" y="103" width="464" height="17" uuid="12615cb9-97ef-4e67-8400-c18368ef723f"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{clientName}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="126" width="464" height="17" uuid="69e5e0bc-1abb-4ce3-90c6-f455a2ca11ad"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{clientAddress}]]></textFieldExpression>
 			</textField>
@@ -146,7 +146,7 @@
 					<rightPen lineWidth="0.5" lineColor="#9E9E9E"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="false"/>
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{userPhoneNumber}]]></textFieldExpression>
 			</textField>
@@ -162,7 +162,7 @@
 					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#03A9F4"/>
 				</box>
 				<textElement verticalAlignment="Bottom">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[FECHA]]></text>
 			</staticText>
@@ -187,14 +187,14 @@
 					<rightPen lineWidth="0.5" lineColor="#9E9E9E"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{userEmail}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="149" width="464" height="16" uuid="00ed997b-f42d-4de4-b1e9-88d1010ba65f"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{clientPhoneNumber}]]></textFieldExpression>
 			</textField>
@@ -207,7 +207,7 @@
 					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#9E9E9E"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{companyTitle}]]></textFieldExpression>
 			</textField>
@@ -218,7 +218,7 @@
 					<rightPen lineWidth="0.25" lineColor="#9E9E9E"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{companySlogan}]]></textFieldExpression>
 			</textField>
@@ -234,7 +234,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0950574c-e611-4cff-b714-cd1a3e01e6d7"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CANTIDAD]]></text>
 			</staticText>
@@ -243,7 +243,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7094ae1f-b7f9-44f0-a625-cf6bda2080f4"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CONCEPTO]]></text>
 			</staticText>
@@ -252,7 +252,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4cc53ff-9e6d-43e4-8534-62a8989a8203"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PRECIO UNITARIO]]></text>
 			</staticText>
@@ -261,7 +261,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea89ae3e-e2ed-43fe-8c31-0cc487c070ee"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[IMPORTE]]></text>
 			</staticText>
@@ -283,7 +283,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea89ae3e-e2ed-43fe-8c31-0cc487c070ee"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{totalPrice}]]></textFieldExpression>
 			</textField>
@@ -292,7 +292,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4cc53ff-9e6d-43e4-8534-62a8989a8203"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{unitPrice}]]></textFieldExpression>
 			</textField>
@@ -301,7 +301,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7094ae1f-b7f9-44f0-a625-cf6bda2080f4"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{concept}]]></textFieldExpression>
 			</textField>
@@ -310,7 +310,7 @@
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0950574c-e611-4cff-b714-cd1a3e01e6d7"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
 			</textField>
@@ -324,7 +324,7 @@
 					<pen lineWidth="0.5" lineColor="#9E9E9E"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
@@ -336,7 +336,7 @@
 					<rightPen lineWidth="1.0" lineColor="#03A9F4"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="true"/>
+					<font fontName="SansSerif" size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MANO DE OBRA]]></text>
 			</staticText>
@@ -348,7 +348,7 @@
 					<rightPen lineWidth="1.0" lineColor="#03A9F4"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
+					<font fontName="SansSerif" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{workforce}]]></textFieldExpression>
 			</textField>
@@ -358,7 +358,7 @@
 					<pen lineWidth="0.5" lineColor="#9E9E9E"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" isBold="false"/>
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
 			</textField>
@@ -369,14 +369,14 @@
 			<textField evaluationTime="Report">
 				<reportElement x="539" y="10" width="33" height="20" uuid="edb37433-85ae-4669-aa79-1f9ebb790da8"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="439" y="10" width="100" height="20" uuid="af844e45-4da2-46f3-97d0-6749ec2c55c9"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
@@ -387,14 +387,14 @@
 			<textField>
 				<reportElement x="439" y="185" width="100" height="20" uuid="b2297093-c8aa-46ec-bbfb-2ca29d932b8c"/>
 				<textElement textAlignment="Right">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="539" y="185" width="33" height="20" uuid="36f1360b-75c5-4faf-9968-191cb126f4e7"/>
 				<textElement textAlignment="Left">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
@@ -402,7 +402,7 @@
 				<reportElement x="0" y="6" width="572" height="40" uuid="7040c028-da14-43a4-badb-acb7d53fe876"/>
 				<box topPadding="0" leftPadding="10" bottomPadding="0" rightPadding="10"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="8"/>
+					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<text><![CDATA[Este pagaré es mercantil y esta regido por la Ley General de Títulos y Operaciones de Crédito en su articulo 173 parte final y artículos correlativos por no ser pagaré domiciliado.]]></text>
 			</staticText>
@@ -415,14 +415,14 @@
 			<textField>
 				<reportElement style="clientNameStyle" isPrintRepeatedValues="false" x="331" y="137" width="160" height="30" uuid="70c92c93-428d-41ef-9983-0aa689d9ffb1"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{clientName}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement style="userNameStyle" x="80" y="137" width="160" height="30" uuid="065fc7af-20bf-4fc9-911a-a8a03cf0c336"/>
 				<textElement textAlignment="Center">
-					<font fontName="Arial" isBold="false"/>
+					<font fontName="SansSerif" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{userName}]]></textFieldExpression>
 			</textField>
